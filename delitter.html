@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Link Text Transformer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+
+    <!-- Milligram CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+</head>
+<body>
+<script>
+    function transformLink() {
+        const linkInput = document.getElementById("linkInput").value;
+        const truncatedLink = linkInput.split("&")[0];
+        const transformedLink = truncatedLink.replaceAll("}", "%7D").replaceAll("{", "%7B");
+        document.getElementById("transformedLink").value = transformedLink;
+    }
+
+    function copyContent() {
+        if (document.getElementById("checkbox").checked = true) {
+            let text = document.getElementById('transformedLink').value;
+            navigator.clipboard.writeText(text);
+            document.getElementById("checkbox").checked = true
+        }
+    }
+</script>
+
+<main>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="column"><h1>Broken One Note Link Converter</h1></div>
+        </div>
+
+        <div class="row">
+            <input type="text" id="linkInput" size="150" oninput="transformLink(), copyContent()">
+        </div>
+
+
+        <div class="row">
+            <input type="checkbox" checked="checked">Copy to Clipboard</input>
+        </div>
+
+        <div class="row">
+            <input type="text" id="transformedLink" size="120" readonly>
+        </div>
+    </div>
+
+
+    </div>
+
+    </div>
+</main>
+
+</body>
+</html>
